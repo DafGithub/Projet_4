@@ -53,4 +53,9 @@ class Billet extends Modele
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
+
+    public function supprimer($id)
+    {
+        return false;
+    }
 }
