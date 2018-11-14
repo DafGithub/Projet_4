@@ -56,6 +56,13 @@ class Billet extends Modele
 
     public function supprimer($id)
     {
-        return false;
+        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :id';
+
+        $res = $this->executerRequete($sql, ['id' => $id]);
+        if ($res->rowCount() == 1)
+            return true;
+        else
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$id'");
+
     }
 }
