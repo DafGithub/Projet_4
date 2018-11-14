@@ -12,9 +12,15 @@ require_once 'Vue.php';
  */
 abstract class Controleur
 {
-    /** Requête entrante */
+
+    /**
+     * @var Requete
+     */
     protected $requete;
-    /** Action à réaliser */
+
+    /**
+     * @var string
+     */
     private $action;
 
     /**
