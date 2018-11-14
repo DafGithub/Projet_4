@@ -53,4 +53,16 @@ class Billet extends Modele
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbBillets'];
     }
+
+    public function supprimer($id)
+    {
+        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :id';
+
+        $res = $this->executerRequete($sql, ['id' => $id]);
+        if ($res->rowCount() == 1)
+            return true;
+        else
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$id'");
+
+    }
 }

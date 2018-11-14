@@ -31,6 +31,15 @@ class ControleurAdmin extends ControleurSecurise
         $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires, 'login' => $login));
     }
 
+    public function supprimer()
+    {
+        $id = $this->requete->getParametre('id');
+
+        $this->billet->supprimer($id);
+
+        $this->rediriger('accueil');
+    }
+
 
 }
 

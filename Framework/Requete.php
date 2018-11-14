@@ -9,10 +9,16 @@ require_once 'Session.php';
  */
 class Requete
 {
-    /** Tableau des paramètres de la requête */
+    /**
+     * Tableau des paramètres de la requête
+     * @var array
+     */
     private $parametres;
 
-    /** Objet session associé à la requête */
+    /**
+     * Objet session associé à la requête
+     * @var Session
+     */
     private $session;
 
     /**
