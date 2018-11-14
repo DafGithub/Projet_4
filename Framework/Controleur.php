@@ -31,6 +31,7 @@ abstract class Controleur
      * Exécute l'action à réaliser.
      * Appelle la méthode portant le même nom que l'action sur l'objet Controleur courant
      *
+     * @param $action Le nom de l'action à executer
      * @throws Exception Si l'action n'existe pas dans la classe Controleur courante
      */
     public function executerAction($action)
@@ -75,9 +76,8 @@ abstract class Controleur
 
     /**
      * Effectue une redirection vers un contrôleur et une action spécifiques
-     *
-     * @param string $controleur Contrôleur
-     * @param type $action Action Action
+     * @param $controleur
+     * @param null $action
      */
     protected function rediriger($controleur, $action = null)
     {
