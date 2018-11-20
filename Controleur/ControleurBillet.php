@@ -28,10 +28,8 @@ class ControleurBillet extends Controleur
     public function index()
     {
         $idBillet = $this->requete->getParametre("id");
-
         $billet = $this->billet->getBillet($idBillet);
         $commentaires = $this->commentaire->getCommentaires($idBillet);
-
         $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 

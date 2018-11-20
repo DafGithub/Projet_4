@@ -21,4 +21,3 @@ class ControleurAccueil extends Controleur
     }
 
 }
-
