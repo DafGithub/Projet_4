@@ -54,15 +54,28 @@ class Billet extends Modele
         return $ligne['nbBillets'];
     }
 
-    public function supprimer($id)
+    public function supprimerBillet($idBillet)
     {
         $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :id';
-
-        $res = $this->executerRequete($sql, ['id' => $id]);
-        if ($res->rowCount() == 1)
+        $resultat = $this->executerRequete($sql, ['id' => $idBillet]);
+        if ($resultat->rowCount() == 1)
             return true;
         else
-            throw new Exception("Aucun billet ne correspond à l'identifiant '$id'");
-
+            throw new Exception("Aucun billet ne correspond à l'identifiant '$idBillet'");
     }
+
+    public function ajouterBillet($titre, $contenu)
+    {
+        $sql = 'INSERT INTO T_BILLET (BIL_DATE, BIL_TITRE, BIL_CONTENU) VALUES (:date,:titre,:content)';
+        $date = date('Y-m-d H:i:s');
+        $this->executerRequete($sql, ['date' => $date, 'titre' => $titre, 'content' => $contenu]);
+    }
+
+    public function modifierBillet($idBillet, $titre, $contenu)
+    {
+        $sql = 'UPDATE T_BILLET SET BIL_DATE = :date, BIL_TITRE = :titre, BIL_CONTENU =:content WHERE BIL_ID = :id';
+        $date = date('Y-m-d H:i:s');
+        $this->executerRequete($sql, ['date' => $date, 'titre' => $titre, 'content' => $contenu, 'id' => $idBillet]);
+    }
+
 }

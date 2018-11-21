@@ -21,6 +21,11 @@ h1, h2 {
     color: white;
 }
 
+a {
+    text-decoration: none;
+    color: #65c4ff;
+}
+
 .titreBillet {
     margin-bottom: 0px;
 }
@@ -56,5 +61,5 @@ h1, h2 {
 }
 
 #lienDeco {
-    color: #bfbfbf;
+    color: #ee624c;
 }
