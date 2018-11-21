@@ -47,8 +47,25 @@ class ControleurAdmin extends ControleurSecurise
         $titre = $this->requete->getParametre('titre');
         $contenu = $this->requete->getParametre("contenu");
         $this->billet->ajouterBillet($titre, $contenu);
-        $this->executerAction("index");
+        $this->rediriger('admin');
+    }
+
+
+    public function modifierBillet()
+    {
+        $idBillet = $this->requete->getParametre("id");
+        $billet = $this->billet->getBillet($idBillet);
+        $commentaires = $this->commentaire->getCommentaires($idBillet);
+
+        if ($this->requete->existeParametre('titre') &&
+            $this->requete->existeParametre('contenu')) {
+            $titre = $this->requete->getParametre('titre');
+            $contenu = $this->requete->getParametre("contenu");
+            $this->billet->modifierBillet($idBillet, $titre, $contenu);
+            $this->rediriger('admin');
+        }
+
+        $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
 }
-

@@ -66,10 +66,16 @@ class Billet extends Modele
 
     public function ajouterBillet($titre, $contenu)
     {
-        $sql = 'INSERT INTO T_BILLET (BIL_DATE, BIL_TITRE, BIL_CONTENU) VALUES (?,?,?)';
+        $sql = 'INSERT INTO T_BILLET (BIL_DATE, BIL_TITRE, BIL_CONTENU) VALUES (:date,:titre,:content)';
         $date = date('Y-m-d H:i:s');
-        $this->executerRequete($sql, array($date, $titre, $contenu));
+        $this->executerRequete($sql, ['date' => $date, 'titre' => $titre, 'content' => $contenu]);
+    }
 
+    public function modifierBillet($idBillet, $titre, $contenu)
+    {
+        $sql = 'UPDATE T_BILLET SET BIL_DATE = :date, BIL_TITRE = :titre, BIL_CONTENU =:content WHERE BIL_ID = :id';
+        $date = date('Y-m-d H:i:s');
+        $this->executerRequete($sql, ['date' => $date, 'titre' => $titre, 'content' => $contenu, 'id' => $idBillet]);
     }
 
 }

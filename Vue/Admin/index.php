@@ -18,7 +18,7 @@ Ce blog comporte <?= $this->nettoyer($nbBillets) ?> billet(s) et <?= $this->nett
             <time><?= $this->nettoyer($billet['date']) ?></time>
         </header>
         <p><?= $this->nettoyer($billet['contenu']) ?></p>
-        <a href="<?= "adminBillet/index/" . $this->nettoyer($billet['id']) ?>">Modifier</a>
+        <a href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a>
     </article>
     <hr/>
 <?php endforeach; ?>
