@@ -15,6 +15,7 @@ class Vue
     /** Titre de la vue (défini dans le fichier vue) */
     private $titre;
 
+
     /**
      * Constructeur
      *

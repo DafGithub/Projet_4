@@ -1,4 +1,4 @@
-<?php $this->titre = "Mon Blog - Administration" ?>
+<?php $this->titre = "Administration" ?>
 
 <h2>Administration</h2>
 

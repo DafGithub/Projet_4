@@ -19,12 +19,9 @@
     <p><?= $this->nettoyer($commentaire['contenu']) ?></p>
 <?php endforeach; ?>
 <hr/>
-<form method="post" action="admin/supprimerBillet">
-    <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
-    <input type="submit" value="Supprimer"/>
-</form>
+<a href="admin/supprimerBillet/<?= $billet['id'] ?>">Supprimer</a>
 
-<form method="post" action="admin/modifierBillet">
+<form method="post" action="">
     <input id="titre" name="titre" type="text" value="<?= $this->nettoyer($billet['titre']) ?>"
            required/><br/>
     <textarea id="contenu" name="contenu" rows="4"
