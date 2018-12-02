@@ -21,6 +21,7 @@ class ControleurAdmin extends ControleurSecurise
     {
         $this->billet = new Billet();
         $this->commentaire = new Commentaire();
+        $this->is_admin = true;
     }
 
     public function index()
@@ -39,6 +40,13 @@ class ControleurAdmin extends ControleurSecurise
     {
         $id = $this->requete->getParametre('id');
         $this->billet->supprimerBillet($id);
+        $this->rediriger('admin');
+    }
+
+    public function supprimerCommentaire()
+    {
+        $id = $this->requete->getParametre('id');
+        $this->commentaire->supprimerCommentaire($id);
         $this->rediriger('admin');
     }
 
