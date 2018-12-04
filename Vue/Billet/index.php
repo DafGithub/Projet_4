@@ -1,5 +1,16 @@
 <?php $this->titre = "B.S.P.L.A - " . $this->nettoyer($billet['titre']); ?>
-
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="title col-12 col-lg-8">
+            <h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                <a href=""><?= $this->nettoyer($billet['titre']) ?></a>
+            </h1>
+            <h2 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-7">
+                <time> Date de création : <?= $this->nettoyer($billet['date']) ?></time>
+            </h2>
+        </div>
+    </div>
+</div>
 <section class="cid-ragOec71Mi">
     <div class="container">
         <div class="media-container-row">
@@ -9,17 +20,13 @@
                         <div class="mbr-section-text">
                             <p class="mbr-text align-right mb-0 mbr-fonts-style display-7">
                                 <article>
-                                    <header>
-                                        <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
-                                        <time> Dernière mise à jour : <?= $this->nettoyer($billet['date']) ?></time>
-                                    </header>
                             <p><?= $this->nettoyer($billet['contenu']) ?></p>
                             </article>
                             </p>
                         </div>
                     </div>
                     <div class="mbr-figure" style="width: 60%;">
-                        <img src="assets/images/01.jpg" alt="Mobirise">
+                        <img src="assets/images/01.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -43,6 +50,9 @@
                                 <p class="date"><?= $this->nettoyer($commentaire['date']) ?> </p>
                                 <p><strong><?= $this->nettoyer($commentaire['auteur']) ?> : </strong></p>
                                 <p class="blockquote-footer"><?= $this->nettoyer($commentaire['contenu']) ?></p>
+                                <a class="btn-form" href="billet/signalerCommentaire/<?= $commentaire['id'] ?>"
+                                   role="button">Signaler</a>
+                                <hr/>
                             <?php endforeach; ?>
                             <hr/>
                             </p>
@@ -74,8 +84,9 @@
                                 <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
 
                                 <div class="row justify-content-center">
-                                    <span class="input-group-btn"> <button href="" type="submit"
-                                                                           class="btn btn-primary btn-form display-4">Commenter</button> </span>
+                                    <span class="input-group-btn">
+                                        <button href="" type="submit" class="btn btn-primary btn-form display-4">Commenter</button>
+                                    </span>
                                 </div>
                             </form>
                             </p>

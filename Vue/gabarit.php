@@ -48,36 +48,51 @@
                         Chercher sur le site
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="admin">
+                        <span class="mbri-desktop mbr-iconfont mbr-iconfont-btn"></span>
+                        Administration
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>
 </section>
 
-<!---------------#contenu--------------->
+<div>
+    <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])): ?>
+        <div class="alert alert-success">
+            <?php
+            echo $_SESSION['message'];
+            unset($_SESSION['message']);
+            ?>
+        </div>
+    <?php endif; ?>
+</div>
+
+<!---------------contenu--------------->
 
 <div id="contenu">
     <?= $contenu ?>
 </div>
 
+<!---------------Footer------------------>
 <section once="" class="cid-ragQhbeR3B" id="footer7-l">
     <div class="container">
         <div class="media-container-row align-center mbr-white">
             <div class="row row-links">
                 <ul class="foot-menu">
                     <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white mbr-bold" href="" target="">About me</a>
+                        <a class="text-white mbr-bold" href="" target="">A propos</a>
                     </li>
                     <li class="foot-menu-item mbr-fonts-style display-7">
                         <a class="text-white mbr-bold" href="" target="">Services</a>
                     </li>
                     <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white mbr-bold" href="" target="">Get In Touch</a>
+                        <a class="text-white mbr-bold" href="" target="">Contact</a>
                     </li>
                     <li class="foot-menu-item mbr-fonts-style display-7">
                         <a class="text-white mbr-bold" href="" target="">Collaboration</a>
-                    </li>
-                    <li class="foot-menu-item mbr-fonts-style display-7">
-                        <a class="text-white mbr-bold" href="" target="">My Work</a>
                     </li>
                 </ul>
             </div>

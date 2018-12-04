@@ -15,6 +15,11 @@ class Vue
     /** Titre de la vue (défini dans le fichier vue) */
     private $titre;
 
+    /**
+     * @var bool
+     */
+    private $is_admin;
+
 
     /**
      * Constructeur
@@ -22,7 +27,7 @@ class Vue
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
-    public function __construct($action, $controleur = "")
+    public function __construct($action, $controleur = "", $is_admin = false)
     {
         // Détermination du nom du fichier vue à partir de l'action et du constructeur
         // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
@@ -31,6 +36,7 @@ class Vue
             $fichier = $fichier . $controleur . "/";
         }
         $this->fichier = $fichier . $action . ".php";
+        $this->is_admin = $is_admin;
     }
 
     /**
@@ -47,7 +53,13 @@ class Vue
         // Nécessaire pour les URI de type controleur/action/id
         $racineWeb = Configuration::get("racineWeb", "/");
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('Vue/gabarit.php',
+        $template = ($this->is_admin) ? 'Vue/gabaritBack.php' : 'Vue/gabarit.php';
+        /*if($this->is_admin === true){
+            $template = 'Vue/gabaritBack.php' ;
+        }  else{
+            $template = 'Vue/gabarit.php' ;
+        }*/
+        $vue = $this->genererFichier($template,
             array('titre' => $this->titre, 'contenu' => $contenu, 'racineWeb' => $racineWeb));
         // Renvoi de la vue générée au navigateur
         echo $vue;

@@ -15,6 +15,7 @@ class ControleurConnexion extends Controleur
     public function __construct()
     {
         $this->utilisateur = new Utilisateur();
+        $this->is_admin = true;
     }
 
     public function index()

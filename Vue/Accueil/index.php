@@ -20,9 +20,7 @@
     </div>
 </section>
 
-<?php foreach ($billets
-
-as $billet): ?>
+<?php foreach ($billets as $billet): ?>
 <section class="mbr-section content7 cid-ragOec71Mi" id="content7-8">
     <div class="container">
         <div class="media-container-row">
@@ -30,7 +28,7 @@ as $billet): ?>
                 <div class="media-container-row">
                     <div class="media-content">
                         <div class="mbr-section-text">
-                            <article>
+                            <article class="boundaries">
                                 <header>
                                     <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
                                     <time><?= $this->nettoyer($billet['date']) ?></time>
@@ -48,7 +46,7 @@ as $billet): ?>
             </div>
         </div>
     </div>
-
-    <?php endforeach; ?>
+</section>
+<?php endforeach; ?>
 
 

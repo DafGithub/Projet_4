@@ -2,20 +2,16 @@
 
 require_once 'Framework/Modele.php';
 
-/**
- * Fournit les services d'accès aux genres musicaux
- *
- * @author Baptiste Pesquet
- */
+
 class Commentaire extends Modele
 {
 
 // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet)
     {
-        $sql = 'select COM_ID as id, COM_DATE as date,'
-            . ' COM_AUTEUR as auteur, COM_CONTENU as contenu from T_COMMENTAIRE'
-            . ' where BIL_ID=?'
+        $sql = 'SELECT COM_ID as id, COM_DATE as date,'
+            . ' COM_AUTEUR as auteur, COM_CONTENU AS contenu FROM T_COMMENTAIRE'
+            . ' WHERE BIL_ID=?'
             . 'ORDER BY COM_ID DESC';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
@@ -29,6 +25,17 @@ class Commentaire extends Modele
         $this->executerRequete($sql, array($date, $auteur, $contenu, $idBillet));
     }
 
+    public function supprimerCommentaire($idCom)
+    {
+        $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :id';
+        $resultat = $this->executerRequete($sql, ['id' => $idCom]);
+        if ($resultat->rowCount() == 1)
+            return true;
+        else
+            throw new Exception("Aucun commentaire ne correspond à l'identifiant '$idCom'");
+    }
+
+
     /**
      * Renvoie le nombre total de commentaires
      *
@@ -41,4 +48,23 @@ class Commentaire extends Modele
         $ligne = $resultat->fetch();  // Le résultat comporte toujours 1 ligne
         return $ligne['nbCommentaires'];
     }
+
+
+    /**
+     * @param $idCom
+     */
+    public function getCommentaire($idCom)
+    {
+        $sql = 'SELECT COM_ID as id, COM_DATE as date, BIL_ID AS billetId,'
+            . ' COM_AUTEUR as auteur, COM_CONTENU AS contenu FROM T_COMMENTAIRE'
+            . ' WHERE COM_ID= :id';
+
+        $resultat = $this->executerRequete($sql, array('id' => $idCom));
+        if ($resultat->rowCount() == 1)
+            return $resultat->fetch();
+        else
+            throw new Exception("Aucun commentaire ne correspond à l'identifiant '$idCom'");
+    }
+
+
 }

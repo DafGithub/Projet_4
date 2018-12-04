@@ -783,7 +783,7 @@
                         }
                     );
                 }
-            }
+            }    
         }
     }
 
@@ -800,7 +800,7 @@
         $target.find('.carousel').attr('id', $carouselID);
         $target.find('.carousel-controls a').attr('href', '#' + $carouselID);
         $target.find('.carousel-indicators li').attr('data-target', '#' + $carouselID);
-        setActiveCarouselItem($target);
+        setActiveCarouselItem($target);  
     }
 
     function initClientCarousel(card) {
@@ -882,7 +882,6 @@
     $.fn.outerFind = function (selector) {
         return this.find(selector).addBack(selector);
     };
-
     function initTabs(target) {
         if ($(target).find('.nav-tabs').length !== 0) {
             $(target).outerFind('section[id^="tabs"]').each(function () {
@@ -921,7 +920,7 @@
                         initClientCarousel($(this));
                     }
                 });
-            }
+            } 
         }
         if (typeof window.initPopupBtnPlugin === 'undefined') {
             if ($(document.body).find('section.popup-btn-cards').length != 0) {
@@ -929,7 +928,7 @@
                 $('section.popup-btn-cards .card-wrapper').each(function (index, el) {
                     $(this).addClass('popup-btn');
                 });
-            }
+            }      
         }
         if (typeof window.initTestimonialsPlugin === 'undefined') {
             if ($(document.body).find('.testimonials-slider').length != 0) {
@@ -937,7 +936,7 @@
                 $('.testimonials-slider').each(function () {
                     initTestimonialsCarousel(this);
                 });
-            }
+            }      
         }
         if (typeof window.initSwitchArrowPlugin === 'undefined') {
             window.initSwitchArrowPlugin = true;
@@ -956,20 +955,20 @@
                 if (!$iscollapsing.hasClass('collapsing')) {
                     if ($id.indexOf('toggle') != -1) {
                         if ($(this).hasClass('collapsed')) {
-                            $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up');
+                            $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up'); 
                         }
                         else {
-                            $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down');
+                            $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down'); 
                         }
                     }
                     else if ($id.indexOf('accordion') != -1) {
                         var $accordion = $(this).closest('.accordionStyles ');
 
                         $accordion.children('.card').each(function () {
-                            $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down');
+                            $(this).find('span.sign').removeClass('mbri-arrow-up').addClass('mbri-arrow-down'); 
                         });
                         if ($(this).hasClass('collapsed')) {
-                            $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up');
+                            $(this).find('span.sign').removeClass('mbri-arrow-down').addClass('mbri-arrow-up'); 
                         }
                     }
                 }

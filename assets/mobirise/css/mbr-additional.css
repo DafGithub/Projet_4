@@ -5,6 +5,22 @@ body {
     line-height: 1.5;
 }
 
+/*------------- Mes ajouts ---------------------*/
+
+.boundaries {
+    max-width: 500px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .boundaries {
+        max-width: 300px;
+        overflow: hidden;
+    }
+
+}
+
+/*------------- Mes ajouts ---------------------*/
 .mbr-section-title {
     font-style: normal;
     line-height: 1.2;
