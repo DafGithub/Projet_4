@@ -60,12 +60,11 @@
 </section>
 
 <div>
-    <?php if (isset($_SESSION['message']) && !empty($_SESSION['message'])): ?>
-        <div class="alert alert-success">
-            <?php
-            echo $_SESSION['message'];
-            unset($_SESSION['message']);
-            ?>
+
+
+    <?php if ($messageFlash): ?>
+        <div class="alert alert-<?= $messageFlash['type'] ?>">
+            <?= $messageFlash['message']; ?>
         </div>
     <?php endif; ?>
 </div>

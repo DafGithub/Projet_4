@@ -21,9 +21,12 @@
                 <p><?= $this->nettoyer($commentaireSignale['contenuCom']) ?></p>
                 <button><a href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>">Afficher le
                         billet</a></button>
+                <button><a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
+                        Supprimer le signalement</a></button>
                 <button>
                     <a href="<?= "admin/supprimerCommentaireSignale/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
                         Supprimer le commentaire </a></button>
+
                 <hr>
             <?php endforeach; ?>
 

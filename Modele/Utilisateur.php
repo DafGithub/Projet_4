@@ -19,9 +19,8 @@ class Utilisateur extends Modele
      */
     public function connecter($login, $mdp)
     {
-        $sql = "select UTIL_ID from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
-        $utilisateur = $this->executerRequete($sql, array($login, $mdp));
-        return ($utilisateur->rowCount() == 1);
+        $utilisateur = $this->getUtilisateur($login);
+        return (password_verify($mdp, $utilisateur['mdp']));
     }
 
     /**
@@ -32,11 +31,11 @@ class Utilisateur extends Modele
      * @return mixed L'utilisateur
      * @throws Exception Si aucun utilisateur ne correspond aux paramètres
      */
-    public function getUtilisateur($login, $mdp)
+    public function getUtilisateur($login)
     {
         $sql = "select UTIL_ID as idUtilisateur, UTIL_LOGIN as login, UTIL_MDP as mdp 
-            from T_UTILISATEUR where UTIL_LOGIN=? and UTIL_MDP=?";
-        $utilisateur = $this->executerRequete($sql, array($login, $mdp));
+            from T_UTILISATEUR where UTIL_LOGIN=?";
+        $utilisateur = $this->executerRequete($sql, array($login));
         if ($utilisateur->rowCount() == 1)
             return $utilisateur->fetch();  // Accès à la première ligne de résultat
         else

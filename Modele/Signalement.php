@@ -38,14 +38,20 @@ class Signalement extends Modele
         return $commentairesSignales;
     }
 
+    /**
+     * @param $id
+     * @return bool
+     * @throws Exception
+     */
     public function supprimerSignalement($id)
     {
         $sql = 'DELETE FROM T_SIGNAL WHERE COM_ID = :id';
         $resultat = $this->executerRequete($sql, ['id' => $id]);
-        if ($resultat->rowCount() == 1)
+        if ($resultat->rowCount() > 0)
             return true;
         else
             throw new Exception("Aucun commentaire ne correspond à l'identifiant '$id'");
     }
+
 
 }

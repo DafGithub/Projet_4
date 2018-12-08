@@ -82,7 +82,8 @@ abstract class Controleur
 
         // Instanciation et génération de la vue
         $vue = new Vue($actionVue, $controleurVue, $this->is_admin);
-        $vue->generer($donneesVue);
+        $vue->setFlash($this->requete->getSession()->getFlash());
+        $vue->generer(array_merge($donneesVue));
     }
 
     /**
@@ -103,6 +104,12 @@ abstract class Controleur
         }
         // Redirection vers l'URL /racine_site/controleur/action
         header("Location:" . $url);
+    }
+
+    public function setFlash($type, $message)
+    {
+
+        $this->requete->getSession()->setFlash($type, $message);
     }
 
 }

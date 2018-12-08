@@ -39,9 +39,8 @@
                                             <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
                                             <time> Date de création : <?= $this->nettoyer($billet['date']) ?></time>
                                         </header>
-                                <p><?= $this->nettoyer($billet['contenu']) ?></p>
+                                <p><?= $billet['contenu'] ?></p>
                                 <a href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a>
-
                                 </article>
                                 </p>
                             </div>
@@ -78,12 +77,11 @@
                                 <label class="form-control-label mbr-fonts-style display-7" for="texte">
                                     Texte :
                                 </label>
-                                <textarea id="tynimce" id="texte" name="contenu" rows="4"
-                                          placeholder="" required class="form-control"></textarea><br/>
-                                <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
+                                <textarea id="texte" name="contenu" rows="4"
+                                          placeholder="" class="form-control"></textarea><br/>
 
                                 <div class="row justify-content-center">
-                                    <span class="input-group-btn"> <button href="" type="submit"
+                                    <span class="input-group-btn"> <button type="submit"
                                                                            class="btn btn-primary btn-form display-4">Créer</button> </span>
                                 </div>
                             </form>

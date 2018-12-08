@@ -20,7 +20,7 @@
                         <div class="mbr-section-text">
                             <p class="mbr-text align-right mb-0 mbr-fonts-style display-7">
                                 <article>
-                            <p><?= $this->nettoyer($billet['contenu']) ?></p>
+                            <p><?= $billet['contenu'] ?></p>
                             </article>
                             </p>
                         </div>

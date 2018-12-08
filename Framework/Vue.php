@@ -20,6 +20,8 @@ class Vue
      */
     private $is_admin;
 
+    private $flash = null;
+
 
     /**
      * Constructeur
@@ -37,6 +39,11 @@ class Vue
         }
         $this->fichier = $fichier . $action . ".php";
         $this->is_admin = $is_admin;
+    }
+
+    public function setFlash($flash)
+    {
+        $this->flash = $flash;
     }
 
     /**
@@ -60,7 +67,7 @@ class Vue
             $template = 'Vue/gabarit.php' ;
         }*/
         $vue = $this->genererFichier($template,
-            array('titre' => $this->titre, 'contenu' => $contenu, 'racineWeb' => $racineWeb));
+            array('titre' => $this->titre, 'contenu' => $contenu, 'racineWeb' => $racineWeb, 'messageFlash' => $this->flash));
         // Renvoi de la vue générée au navigateur
         echo $vue;
     }
