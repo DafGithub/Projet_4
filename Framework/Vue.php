@@ -111,6 +111,10 @@ class Vue
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }
 
+    /**
+     * @param $valeur
+     * @return string
+     */
     public function tronquer($valeur)
     {
         // Le nombre le lettres avant les ...
