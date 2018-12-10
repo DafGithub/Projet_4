@@ -26,7 +26,7 @@
         <article class="text">
             <header>
                 <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
-                <time><?= $this->nettoyer($billet['date']) ?></time>
+                <time>Créé <?= $this->nettoyer($billet['date']) ?></time>
             </header>
             <p><?= $this->tronquer($billet['contenu']) ?></p>
             <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><p>Lire la suite</p>
