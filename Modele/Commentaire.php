@@ -27,7 +27,8 @@ class Commentaire extends Modele
 
     public function supprimerCommentaire($idCom)
     {
-        $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :id';
+        $sql = 'DELETE FROM T_COMMENTAIRE WHERE COM_ID = :id;
+                DELETE FROM T_SIGNAL WHERE COM_ID = :id';
         $resultat = $this->executerRequete($sql, ['id' => $idCom]);
         if ($resultat->rowCount() == 1)
             return true;

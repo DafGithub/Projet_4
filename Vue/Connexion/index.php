@@ -16,7 +16,7 @@
     <p><?= $msgErreur ?></p>
 <?php endif; ?>
 
-<section class="cid-ragOec71Mi">
+<section class="content_design_1">
     <div class="container">
         <div class="media-container-row">
             <div class="col-12 col-md-6">

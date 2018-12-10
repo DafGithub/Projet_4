@@ -48,6 +48,7 @@ class ControleurBillet extends Controleur
         $contenu = $this->requete->getParametre("contenu");
 
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
+        $this->setFlash('success', 'Le commentaire vient d\'être mis en ligne');
 
         // Exécution de l'action par défaut pour réafficher la liste des billets
         $this->executerAction("index");

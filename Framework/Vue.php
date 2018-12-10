@@ -105,10 +105,20 @@ class Vue
      * @param string $valeur Valeur à nettoyer
      * @return string Valeur nettoyée
      */
-    private function nettoyer($valeur)
+    public function nettoyer($valeur)
     {
         // Convertit les caractères spéciaux en entités HTML
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }
 
+    public function tronquer($valeur)
+    {
+        // Le nombre le lettres avant les ...
+        $len = 500;
+        if (strlen($valeur) >= $len) {
+            $valeur = substr($valeur, 0, $len) . "...";
+        }
+        // On écrit la chaine modifiée
+        return $valeur;
+    }
 }

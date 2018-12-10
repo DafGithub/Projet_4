@@ -56,7 +56,9 @@ class Billet extends Modele
 
     public function supprimerBillet($idBillet)
     {
-        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :id';
+        $sql = 'DELETE FROM T_BILLET WHERE BIL_ID = :id;
+                DELETE FROM T_COMMENTAIRE WHERE BIL_ID = :id;
+                DELETE FROM T_SIGNAL WHERE BIL_ID = :id';
         $resultat = $this->executerRequete($sql, ['id' => $idBillet]);
         if ($resultat->rowCount() == 1)
             return true;

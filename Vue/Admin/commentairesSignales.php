@@ -24,7 +24,7 @@
                 <button><a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
                         Supprimer le signalement</a></button>
                 <button>
-                    <a href="<?= "admin/supprimerCommentaireSignale/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
+                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
                         Supprimer le commentaire </a></button>
 
                 <hr>

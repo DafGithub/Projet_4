@@ -96,15 +96,8 @@ class ControleurAdmin extends ControleurSecurise
     {
         $id = $this->requete->getParametre('id');
         $this->signalement->supprimerSignalement($id);
-        $this->rediriger('admin');
+        $this->rediriger('admin', 'commentairesSignales');
 
     }
 
-    public function supprimerCommentaireSignale()
-    {
-        $this->supprimerCommentaire();
-        $this->supprimerSignalement();
-        $this->rediriger('admin');
-
-    }
 }

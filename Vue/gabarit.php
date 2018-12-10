@@ -5,11 +5,11 @@
     <base href="<?= $racineWeb ?>">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Billet simple pour l'Alaska, un livre de Jean Forteroche">
     <title><?= $titre ?></title>
-    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+    <!--    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">-->
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <link rel="stylesheet" href="assets/tether/tether.min.css">
+    <!--    <link rel="stylesheet" href="assets/tether/tether.min.css">-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
@@ -23,7 +23,7 @@
 <!------------------Navbar----------------->
 
 <section class="menu cid-ragWussxPT" once="menu" id="menu1-p">
-    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top collapsed bg-color transparent">
+    <nav class="navbar navbar-expand  navbar-dropdown align-items-center navbar-fixed-top collapsed bg-color transparent">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
@@ -34,6 +34,15 @@
                 <span></span>
             </div>
         </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                <span class="navbar-caption-wrap">
+                    <span class="navbar-caption text-white display-4">
+                        <?= $titre ?>
+                    </span>
+                </span>
+            </div>
+        </div>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav nav-dropdown nav-right navbar-nav-top-padding" data-app-modern-menu="true">
                 <li class="nav-item">
@@ -59,15 +68,25 @@
     </nav>
 </section>
 
-<div>
 
+<div class="container">
+    <div class="media-container-row">
+        <div class="col-12 col-md-6">
+            <?php if ($messageFlash): ?>
+                <div class="alert alert-<?= $messageFlash['type'] ?> align-center alert-dismissible fade show"
+                     role="alert">
+                    <div><?= $messageFlash['message']; ?>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
 
-    <?php if ($messageFlash): ?>
-        <div class="alert alert-<?= $messageFlash['type'] ?>">
-            <?= $messageFlash['message']; ?>
+            <?php endif; ?>
         </div>
-    <?php endif; ?>
+    </div>
 </div>
+
 
 <!---------------contenu--------------->
 
@@ -120,7 +139,7 @@
                 </div>
             </div>
             <div class="row row-copirayt">
-                <p class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7">
+                <p class="text mb-0 mbr-fonts-style mbr-white align-center display-7">
                     © Copyright 2018 Daf - All Rights Reserved
                 </p>
             </div>
@@ -137,8 +156,10 @@
 <script src="assets/parallax/jarallax.min.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
 <script src="assets/theme/js/script.js"></script>
-<script src="assets/formoid/formoid.min.js"></script>
-<script src="assets/mbr-flip-card/mbr-flip-card.js"></script>
+<!--<script src="assets/formoid/formoid.min.js"></script>-->
+<!--<script src="assets/mbr-flip-card/mbr-flip-card.js"></script>-->
+<script src="assets/add.js"></script>
+
 
 </body>
 </html>
