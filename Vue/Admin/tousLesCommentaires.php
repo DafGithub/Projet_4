@@ -15,6 +15,7 @@
                         </span>
                 </div>
             </div>
+            <br>
             <?php foreach ($commentaires as $commentaire): ?>
                 <p><?= $this->nettoyer($commentaire['dateCom']) ?></p>
                 <p><?= $this->nettoyer($commentaire['auteurCom']) ?></p>
@@ -23,13 +24,16 @@
                     <small> Commentaire de : <span
                                 class="font-italic"><?= $this->nettoyer($commentaire['titreBil']) ?></span></small>
                 </p>
-                <button><a href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>">Afficher le
-                        billet</a></button>
-                <button>
-                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>">
-                        Supprimer le commentaire </a></button>
-
+                <div class="btn-group-sm">
+                    <a href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>"
+                       class="btn btn-outline-primary btn-sm">Afficher le
+                        billet</a>
+                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>"
+                       class="btn btn-outline-danger btn-sm">
+                        Supprimer le commentaire </a>
+                </div>
                 <hr>
+
             <?php endforeach; ?>
 
         </div>

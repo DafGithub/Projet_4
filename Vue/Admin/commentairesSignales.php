@@ -15,25 +15,28 @@
                         </span>
                 </div>
             </div>
+            <br>
             <?php foreach ($commentairesSignales as $commentaireSignale): ?>
                 <p><?= $this->nettoyer($commentaireSignale['dateSig']) ?></p>
                 <p><?= $this->nettoyer($commentaireSignale['auteurCom']) ?></p>
                 <p><?= $this->nettoyer($commentaireSignale['contenuCom']) ?></p>
 
                 <p>
-                    <small> Commentaire de : <span
+                    <small> Article commenté : <span
                                 class="font-italic"><?= $this->nettoyer($commentaireSignale['titreBil']) ?></span>
                     </small>
                 </p>
-
-                <button><a href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>">Afficher le
-                        billet</a></button>
-                <button><a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
-                        Supprimer le signalement</a></button>
-                <button>
-                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
-                        Supprimer le commentaire </a></button>
-
+                <div class="btn-group-sm">
+                    <a href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>"
+                       class="btn btn-outline-primary btn-sm">Afficher le
+                        billet</a>
+                    <a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
+                       class="btn btn-outline-danger btn-sm">
+                        Supprimer le signalement</a>
+                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
+                       class="btn btn-outline-danger btn-sm">
+                        Supprimer le commentaire </a>
+                </div>
                 <hr>
             <?php endforeach; ?>
 
