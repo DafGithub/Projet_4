@@ -1,4 +1,4 @@
-<?php $this->titre = "B.S.P.L.A - " . $this->nettoyer($billet['titre']); ?>
+<?php $this->titre = $this->nettoyer($billet['titre']); ?>
 <div class="container">
     <div class="row justify-content-center">
         <div class="title col-12 col-lg-8">
@@ -16,13 +16,11 @@
         <article class="text">
             <p><?= $billet['contenu'] ?></p>
         </article>
+        <div class="row justify-content-center">
+            <button class=" btn btn-primary btn-sm scrollDown">Commenter l'article</button>
+        </div>
     </div>
 </section>
-
-
-<div class="row justify-content-center">
-    <button class=" btn btn-primary btn-sm scrollDown">Commenter l'article</button>
-</div>
 
 
 <section class="content_design_1">
@@ -56,7 +54,7 @@
                            class="form-control"/><br/>
                     <label class="form-control-label mbr-fonts-style display-7" for="txtCommentaire">Commentaire
                         :</label>
-                    <textarea id="txtCommentaire" name="contenu" rows="4"
+                    <textarea maxlength="300" id="txtCommentaire" name="contenu" rows="4"
                               placeholder="" required class="form-control"></textarea><br/>
                     <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
 

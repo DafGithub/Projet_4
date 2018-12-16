@@ -9,13 +9,23 @@ class Commentaire extends Modele
 // Renvoie la liste des commentaires associés à un billet
     public function getCommentaires($idBillet)
     {
-        $sql = 'SELECT COM_ID as id, COM_DATE as date,'
+        $sql = 'SELECT COM_ID as id, DATE_FORMAT(COM_DATE, \'le %d/%m/%Y à %k:%H:%s\') as date,'
             . ' COM_AUTEUR as auteur, COM_CONTENU AS contenu FROM T_COMMENTAIRE'
             . ' WHERE BIL_ID=?'
             . 'ORDER BY COM_ID DESC';
         $commentaires = $this->executerRequete($sql, array($idBillet));
         return $commentaires;
     }
+
+    // Renvoie la liste de tous les commentaires
+    public function getTousLesCommentaires()
+    {
+        $sql = 'SELECT C.COM_CONTENU AS contenuCom, C.COM_AUTEUR AS auteurCom, C.COM_ID AS idCom, C.COM_DATE AS dateCom,
+        B.BIL_TITRE AS titreBil, B.BIL_ID AS idBillet, C.BIL_ID FROM T_COMMENTAIRE AS C, T_BILLET AS B WHERE B.BIL_ID=C.BIL_ID ORDER BY C.COM_DATE DESC';
+        $commentaires = $this->executerRequete($sql);
+        return $commentaires;
+    }
+
 
     public function ajouterCommentaire($auteur, $contenu, $idBillet)
     {
@@ -56,7 +66,7 @@ class Commentaire extends Modele
      */
     public function getCommentaire($idCom)
     {
-        $sql = 'SELECT COM_ID as id, COM_DATE as date, BIL_ID AS billetId,'
+        $sql = 'SELECT COM_ID as id, DATE_FORMAT(COM_DATE, \'le %d/%m/%Y à %k:%H:%s\') as date, BIL_ID AS billetId,'
             . ' COM_AUTEUR as auteur, COM_CONTENU AS contenu FROM T_COMMENTAIRE'
             . ' WHERE COM_ID= :id';
 

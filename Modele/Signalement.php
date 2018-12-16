@@ -33,9 +33,10 @@ class Signalement extends Modele
     public function getCommentairesSignales()
     {
         $sql = 'SELECT C.COM_CONTENU AS contenuCom, C.COM_AUTEUR AS auteurCom, C.COM_ID AS idCom, S.SIG_DATE AS dateSig, 
-        S.COM_ID as idComSig, S.BIL_ID AS idBillet FROM T_COMMENTAIRE AS C, T_SIGNAL AS S WHERE C.COM_ID=S.COM_ID ORDER BY S.SIG_DATE DESC';
+        S.COM_ID as idComSig, S.BIL_ID AS idBillet, B.BIL_TITRE AS titreBil FROM T_COMMENTAIRE AS C, T_SIGNAL AS S,T_BILLET AS B  WHERE C.COM_ID=S.COM_ID AND B.BIL_ID=C.BIL_ID  ORDER BY S.SIG_DATE DESC';
         $commentairesSignales = $this->executerRequete($sql);
         return $commentairesSignales;
+
     }
 
     /**

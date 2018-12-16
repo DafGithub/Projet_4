@@ -5,7 +5,7 @@
                 <a title="Retour page Admin" href="admin">Administration</a>
             </h1>
             <h2 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
-                Liste des commentaires signalés :
+                Liste des commentaires :
             </h2>
             <div class="row justify-content-center">
                 <div class="mbr-form">
@@ -15,23 +15,18 @@
                         </span>
                 </div>
             </div>
-            <?php foreach ($commentairesSignales as $commentaireSignale): ?>
-                <p><?= $this->nettoyer($commentaireSignale['dateSig']) ?></p>
-                <p><?= $this->nettoyer($commentaireSignale['auteurCom']) ?></p>
-                <p><?= $this->nettoyer($commentaireSignale['contenuCom']) ?></p>
-
+            <?php foreach ($commentaires as $commentaire): ?>
+                <p><?= $this->nettoyer($commentaire['dateCom']) ?></p>
+                <p><?= $this->nettoyer($commentaire['auteurCom']) ?></p>
+                <p><?= $this->nettoyer($commentaire['contenuCom']) ?></p>
                 <p>
                     <small> Commentaire de : <span
-                                class="font-italic"><?= $this->nettoyer($commentaireSignale['titreBil']) ?></span>
-                    </small>
+                                class="font-italic"><?= $this->nettoyer($commentaire['titreBil']) ?></span></small>
                 </p>
-
-                <button><a href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>">Afficher le
+                <button><a href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>">Afficher le
                         billet</a></button>
-                <button><a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
-                        Supprimer le signalement</a></button>
                 <button>
-                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>">
+                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>">
                         Supprimer le commentaire </a></button>
 
                 <hr>

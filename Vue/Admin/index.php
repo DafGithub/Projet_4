@@ -9,7 +9,10 @@
             <h2 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
                 Bienvenue, <?= $this->nettoyer($login) ?> !<br>
                 Ce <a title="Retour à l'accueil" href="">blog </a> comporte <?= $this->nettoyer($nbBillets) ?> billet(s)
-                et <?= $this->nettoyer($nbCommentaires) ?> commentaire(s)
+
+                et <a href="<?= "admin/tousLesCommentaires" ?>"><?= $this->nettoyer($nbCommentaires) ?></a>
+                commentaire(s)
+
                 <br>dont <a href="<?= "admin/commentairesSignales" ?>"><?= $this->nettoyer($nbSignalements) ?></a>
                 signalé(s).
             </h2>

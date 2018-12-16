@@ -28,8 +28,10 @@
                 <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
                 <time>Créé <?= $this->nettoyer($billet['date']) ?></time>
             </header>
+            <br>
             <p><?= $this->tronquer($billet['contenu']) ?></p>
-            <a href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>"><p>Lire la suite</p>
+            <a class="btn btn-primary btn-sm" href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">Lire la
+                suite
             </a>
         </article>
 

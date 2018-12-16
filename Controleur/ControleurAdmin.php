@@ -82,6 +82,14 @@ class ControleurAdmin extends ControleurSecurise
         $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
     }
 
+    //    Affiche tous les commenttaires
+    public function tousLesCommentaires()
+    {
+        $commentaires = $this->commentaire->getTousLesCommentaires();
+        $this->genererVue(array('commentaires' => $commentaires));
+
+    }
+
 
 //    Affiche les commenttaires signalés
     public function commentairesSignales()

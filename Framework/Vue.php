@@ -117,10 +117,11 @@ class Vue
      */
     public function tronquer($valeur)
     {
+        $valeur = strip_tags($valeur);
         // Le nombre le lettres avant les ...
         $len = 500;
-        if (strlen($valeur) >= $len) {
-            $valeur = substr($valeur, 0, $len) . "...";
+        if (mb_strlen($valeur) >= $len) {
+            $valeur = mb_substr(html_entity_decode($valeur), 0, $len) . "...";
         }
         // On écrit la chaine modifiée
         return $valeur;

@@ -47,6 +47,9 @@ class ControleurBillet extends Controleur
         $auteur = $this->requete->getParametre("auteur");
         $contenu = $this->requete->getParametre("contenu");
 
+        /* if($contenu trop grand)
+ //flash error
+             else*/
         $this->commentaire->ajouterCommentaire($auteur, $contenu, $idBillet);
         $this->setFlash('success', 'Le commentaire vient d\'être mis en ligne');
 

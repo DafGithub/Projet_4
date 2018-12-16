@@ -34,7 +34,7 @@
                 <span></span>
             </div>
         </button>
-        <div class="menu-logo">
+        <div class="visible menu-logo">
             <div class="navbar-brand">
                 <span class="navbar-caption-wrap">
                     <span class="navbar-caption text-white display-4">
@@ -60,7 +60,7 @@
                 <li class="nav-item">
                     <a class="nav-link link text-white display-4" href="admin">
                         <span class="mbri-desktop mbr-iconfont mbr-iconfont-btn"></span>
-                        Administration
+                        S'identifier
                     </a>
                 </li>
             </ul>
@@ -93,6 +93,8 @@
 <div id="contenu">
     <?= $contenu ?>
 </div>
+<div class="scrollUp"></div>
+
 
 <!---------------Footer------------------>
 <section once="" class="cid-ragQhbeR3B" id="footer7-l">
