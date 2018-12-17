@@ -38,11 +38,7 @@
 <script src="assets/parallax/jarallax.min.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
 <script src="assets/theme/js/script.js"></script>
-<!--<script src="assets/formoid/formoid.min.js"></script>-->
 <script src="assets/mbr-flip-card/mbr-flip-card.js"></script>
-
-
-<!--<script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=h0cgu1mbzy6968m3gi9duafocpvab8roe9sl4m6bus3ls5ip"></script>-->
 <script src="assets/tinymce/tinymce.min.js"></script>
 <script src="assets/tinymce.js"></script>
 <script src="assets/add.js"></script>

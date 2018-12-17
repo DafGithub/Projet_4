@@ -27,8 +27,8 @@
                 <div class="btn-group-sm mbr-form">
                     <span class="input-group-btn"><a
                                 href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>"
-                                class="btn btn-primary btn-sm">Afficher le
-                        billet</a></span>
+                                class="btn btn-primary btn-sm">Afficher l'
+                        article</a></span>
                     <span class="input-group-btn"><a
                                 href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>"
                                 class="btn btn-secondary btn-sm">

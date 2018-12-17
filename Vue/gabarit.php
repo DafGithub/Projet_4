@@ -9,7 +9,6 @@
     <title><?= $titre ?></title>
     <!--    <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">-->
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-    <!--    <link rel="stylesheet" href="assets/tether/tether.min.css">-->
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
@@ -158,8 +157,6 @@
 <script src="assets/parallax/jarallax.min.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
 <script src="assets/theme/js/script.js"></script>
-<!--<script src="assets/formoid/formoid.min.js"></script>-->
-<!--<script src="assets/mbr-flip-card/mbr-flip-card.js"></script>-->
 <script src="assets/add.js"></script>
 
 
