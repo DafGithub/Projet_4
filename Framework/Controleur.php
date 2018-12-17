@@ -24,6 +24,11 @@ abstract class Controleur
     private $action;
 
     /**
+     * @var bool
+     */
+    protected $is_admin = false;
+
+    /**
      * Définit la requête entrante
      *
      * @param Requete $requete Requete entrante
@@ -76,20 +81,35 @@ abstract class Controleur
         $controleurVue = str_replace("Controleur", "", $classeControleur);
 
         // Instanciation et génération de la vue
-        $vue = new Vue($actionVue, $controleurVue);
-        $vue->generer($donneesVue);
+        $vue = new Vue($actionVue, $controleurVue, $this->is_admin);
+        $vue->setFlash($this->requete->getSession()->getFlash());
+        $vue->generer(array_merge($donneesVue));
     }
 
     /**
      * Effectue une redirection vers un contrôleur et une action spécifiques
      * @param $controleur
      * @param null $action
+     * @param null $id
      */
-    protected function rediriger($controleur, $action = null)
+    protected function rediriger($controleur, $action = null, $id = null)
     {
         $racineWeb = Configuration::get("racineWeb", "/");
+        $url = $racineWeb . $controleur;
+        if ($action) {
+            $url .= "/" . $action;
+            if ($id) {
+                $url .= "/" . $id;
+            }
+        }
         // Redirection vers l'URL /racine_site/controleur/action
-        header("Location:" . $racineWeb . $controleur . "/" . $action);
+        header("Location:" . $url);
+    }
+
+    public function setFlash($type, $message)
+    {
+
+        $this->requete->getSession()->setFlash($type, $message);
     }
 
 }

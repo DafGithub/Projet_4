@@ -1,43 +1,80 @@
-<?php $this->titre = "Mon Blog - Administration" ?>
+<?php $this->titre = "Administration" ?>
 
-<h2>Administration</h2>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="title col-12 col-lg-8">
+            <h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
+                Administration
+            </h1>
+            <h2 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
+                Bienvenue, <?= $this->nettoyer($login) ?> !<br>
+                Ce <a title="Retour à l'accueil" href="">blog </a> comporte <?= $this->nettoyer($nbBillets) ?>
+                article(s)
 
-Bienvenue, <?= $this->nettoyer($login) ?> !
-Ce blog comporte <?= $this->nettoyer($nbBillets) ?> billet(s) et <?= $this->nettoyer($nbCommentaires) ?> commentaire(s).
-<br>
-<a id="lienDeco" href="connexion/deconnecter">Se déconnecter</a>
-<br>
+                et <a href="<?= "admin/tousLesCommentaires" ?>"><?= $this->nettoyer($nbCommentaires) ?></a>
+                commentaire(s)
 
-<h2>Billets</h2>
+                <br>dont <a href="<?= "admin/commentairesSignales" ?>"><?= $this->nettoyer($nbSignalements) ?></a>
+                signalé(s).
+            </h2>
+        </div>
+    </div>
 
-<?php foreach ($billets as $billet):
-    ?>
-    <article>
-        <header>
-            <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?> </h1>
-            <time><?= $this->nettoyer($billet['date']) ?></time>
-        </header>
-        <p><?= $this->nettoyer($billet['contenu']) ?></p>
-        <a href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a>
-    </article>
-    <hr/>
+    <div class="row justify-content-center">
+        <div class="mbr-form align-center">
+            <span class="input-group-btn">
+                <a class="btn btn-primary btn-sm scrollDown" role="button">Ecrire un article</a>
+            </span>
+            <span class="input-group-btn">
+                <a class="btn btn-primary btn-sm" href="connexion/deconnecter" role="button">Se déconnecter</a>
+            </span>
+
+            <br>
+            <br>
+        </div>
+    </div>
+</div>
+
+<?php foreach ($billets as $billet): ?>
+    <section class="content_design_1 display-7">
+        <div class="container">
+            <article class="text">
+                <header>
+                    <h1 class="titreBillet"><?= $this->nettoyer($billet['titre']) ?></h1>
+                    <time> Date de création : <?= $this->nettoyer($billet['date']) ?></time>
+                </header>
+                <p><?= $this->tronquer($billet['contenu']) ?></p>
+                <div class="btn-group-sm mbr-form">
+                <span class="input-group-btn"><a class="btn btn-primary btn-sm"
+                                                 href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a></span>
+                </div>
+            </article>
+        </div>
+    </section>
 <?php endforeach; ?>
 
 
-<?php foreach ($commentaires as $commentaire): ?>
-    <p class="date"><?= $this->nettoyer($commentaire['date']) ?> </p>
-    <p><?= $this->nettoyer($commentaire['auteur']) ?> dit :</p>
-    <p><?= $this->nettoyer($commentaire['contenu']) ?></p>
-<?php endforeach; ?>
+<section class="content_design_1 down">
+    <div class="container">
+        <h2 class="mbr-section-title align-center mbr-light pb-5 mbr-fonts-style display-2">
+            Ecrire un article
+        </h2>
+        <form class="mbr-form" method="post" action="admin/ajouterbillet">
+            <label class="form-control-label mbr-fonts-style display-7" for="titre">
+                Titre de l'article :
+            </label>
+            <input id="titre" name="titre" type="text" placeholder="" required
+                   class="form-control"/><br/>
 
-<h2>Créer un billet</h2>
+            <label class="form-control-label mbr-fonts-style display-7" for="texte">Article :</label>
+            <textarea id="texte" name="contenu" rows="10"
+                      placeholder="" class="form-control"></textarea><br/>
 
-<form method="post" action="admin/ajouterbillet">
+            <div class="row justify-content-center">
+                <span class="input-group-btn"> <button type="submit"
+                                                       class="btn btn-primary btn-form display-4">Créer</button> </span>
+            </div>
+        </form>
+    </div>
+</section>
 
-    <input id="titre" name="titre" type="text" placeholder="Titre du Billet"
-           required/><br/>
-    <textarea id="txtCommentaire" name="contenu" rows="20"
-              placeholder="Votre texte" required></textarea><br/>
-    <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
-    <input type="submit" value="Créer"/>
-</form>

@@ -3,6 +3,7 @@
 require_once 'ControleurSecurise.php';
 require_once 'Modele/Billet.php';
 require_once 'Modele/Commentaire.php';
+require_once 'Modele/Signalement.php';
 
 /**
  * Contrôleur des actions d'administration
@@ -13,6 +14,8 @@ class ControleurAdmin extends ControleurSecurise
 {
     private $billet;
     private $commentaire;
+    private $signalement;
+
 
     /**
      * Constructeur
@@ -21,6 +24,9 @@ class ControleurAdmin extends ControleurSecurise
     {
         $this->billet = new Billet();
         $this->commentaire = new Commentaire();
+        $this->signalement = new Signalement();
+
+        $this->is_admin = true;
     }
 
     public function index()
@@ -29,9 +35,10 @@ class ControleurAdmin extends ControleurSecurise
         $nbBillets = $this->billet->getNombreBillets();
         $commentaires = $this->commentaire->getCommentaires('idBillet');
         $nbCommentaires = $this->commentaire->getNombreCommentaires();
+        $nbSignalements = $this->signalement->getNombreSignalements();
         $login = $this->requete->getSession()->getAttribut("login");
         $this->genererVue(array('nbBillets' => $nbBillets, 'nbCommentaires' => $nbCommentaires,
-            'login' => $login, 'billets' => $billets, 'commentaires' => $commentaires));
+            'login' => $login, 'billets' => $billets, 'commentaires' => $commentaires, 'nbSignalements' => $nbSignalements));
 
     }
 
@@ -39,6 +46,13 @@ class ControleurAdmin extends ControleurSecurise
     {
         $id = $this->requete->getParametre('id');
         $this->billet->supprimerBillet($id);
+        $this->rediriger('admin');
+    }
+
+    public function supprimerCommentaire()
+    {
+        $id = $this->requete->getParametre('id');
+        $this->commentaire->supprimerCommentaire($id);
         $this->rediriger('admin');
     }
 
@@ -66,6 +80,32 @@ class ControleurAdmin extends ControleurSecurise
         }
 
         $this->genererVue(array('billet' => $billet, 'commentaires' => $commentaires));
+    }
+
+    //    Affiche tous les commenttaires
+    public function tousLesCommentaires()
+    {
+        $commentaires = $this->commentaire->getTousLesCommentaires();
+        $this->genererVue(array('commentaires' => $commentaires));
+
+    }
+
+
+//    Affiche les commenttaires signalés
+    public function commentairesSignales()
+    {
+
+        $commentairesSignales = $this->signalement->getCommentairesSignales();
+        $this->genererVue(array('commentairesSignales' => $commentairesSignales));
+
+    }
+
+    public function supprimerSignalement()
+    {
+        $id = $this->requete->getParametre('id');
+        $this->signalement->supprimerSignalement($id);
+        $this->rediriger('admin', 'commentairesSignales');
+
     }
 
 }

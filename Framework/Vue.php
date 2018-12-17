@@ -16,12 +16,20 @@ class Vue
     private $titre;
 
     /**
+     * @var bool
+     */
+    private $is_admin;
+
+    private $flash = null;
+
+
+    /**
      * Constructeur
      *
      * @param string $action Action à laquelle la vue est associée
      * @param string $controleur Nom du contrôleur auquel la vue est associée
      */
-    public function __construct($action, $controleur = "")
+    public function __construct($action, $controleur = "", $is_admin = false)
     {
         // Détermination du nom du fichier vue à partir de l'action et du constructeur
         // La convention de nommage des fichiers vues est : Vue/<$controleur>/<$action>.php
@@ -30,6 +38,12 @@ class Vue
             $fichier = $fichier . $controleur . "/";
         }
         $this->fichier = $fichier . $action . ".php";
+        $this->is_admin = $is_admin;
+    }
+
+    public function setFlash($flash)
+    {
+        $this->flash = $flash;
     }
 
     /**
@@ -46,8 +60,14 @@ class Vue
         // Nécessaire pour les URI de type controleur/action/id
         $racineWeb = Configuration::get("racineWeb", "/");
         // Génération du gabarit commun utilisant la partie spécifique
-        $vue = $this->genererFichier('Vue/gabarit.php',
-            array('titre' => $this->titre, 'contenu' => $contenu, 'racineWeb' => $racineWeb));
+        $template = ($this->is_admin) ? 'Vue/gabaritBack.php' : 'Vue/gabarit.php';
+        /*if($this->is_admin === true){
+            $template = 'Vue/gabaritBack.php' ;
+        }  else{
+            $template = 'Vue/gabarit.php' ;
+        }*/
+        $vue = $this->genererFichier($template,
+            array('titre' => $this->titre, 'contenu' => $contenu, 'racineWeb' => $racineWeb, 'messageFlash' => $this->flash));
         // Renvoi de la vue générée au navigateur
         echo $vue;
     }
@@ -85,10 +105,25 @@ class Vue
      * @param string $valeur Valeur à nettoyer
      * @return string Valeur nettoyée
      */
-    private function nettoyer($valeur)
+    public function nettoyer($valeur)
     {
         // Convertit les caractères spéciaux en entités HTML
         return htmlspecialchars($valeur, ENT_QUOTES, 'UTF-8', false);
     }
 
+    /**
+     * @param $valeur
+     * @return string
+     */
+    public function tronquer($valeur)
+    {
+        $valeur = strip_tags($valeur);
+        // Le nombre le lettres avant les ...
+        $len = 500;
+        if (mb_strlen($valeur) >= $len) {
+            $valeur = mb_substr(html_entity_decode($valeur), 0, $len) . " (...)";
+        }
+        // On écrit la chaine modifiée
+        return $valeur;
+    }
 }

@@ -64,4 +64,24 @@ class Session
         return (isset($_SESSION[$nom]) && $_SESSION[$nom] != "");
     }
 
+    public function setFlash($type, $message)
+    {
+
+        $this->setAttribut('message', serialize(['type' => $type, 'message' => $message]));
+    }
+
+    public function getFlash()
+    {
+        try {
+            $flash = $this->getAttribut('message');
+            $flash = unserialize($flash);
+            unset($_SESSION['message']);
+        } catch (Exception $e) {
+            return false;
+        }
+
+
+        return $flash;
+    }
+
 }
