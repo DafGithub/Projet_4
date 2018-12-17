@@ -4,7 +4,7 @@
     <div class="row justify-content-center">
         <div class="title col-12 col-lg-8">
             <h1 class="mbr-section-title align-center pb-3 mbr-fonts-style display-2">
-                Vous devez être connecté pour accéder à cette zone.
+                <a title="Retour à l'accueil" href="">Vous devez être connecté pour accéder à cette zone.</a>
             </h1>
         </div>
     </div>

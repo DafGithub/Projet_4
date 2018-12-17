@@ -24,13 +24,15 @@
                     <small> Commentaire de : <span
                                 class="font-italic"><?= $this->nettoyer($commentaire['titreBil']) ?></span></small>
                 </p>
-                <div class="btn-group-sm">
-                    <a href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>"
-                       class="btn btn-outline-primary btn-sm">Afficher le
-                        billet</a>
-                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>"
-                       class="btn btn-outline-danger btn-sm">
-                        Supprimer le commentaire </a>
+                <div class="btn-group-sm mbr-form">
+                    <span class="input-group-btn"><a
+                                href="<?= "billet/index/" . $this->nettoyer($commentaire['idBillet']) ?>"
+                                class="btn btn-primary btn-sm">Afficher le
+                        billet</a></span>
+                    <span class="input-group-btn"><a
+                                href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaire['idCom']) ?>"
+                                class="btn btn-secondary btn-sm">
+                        Supprimer le commentaire </a></span>
                 </div>
                 <hr>
 

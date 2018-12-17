@@ -26,16 +26,19 @@
                                 class="font-italic"><?= $this->nettoyer($commentaireSignale['titreBil']) ?></span>
                     </small>
                 </p>
-                <div class="btn-group-sm">
-                    <a href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>"
-                       class="btn btn-outline-primary btn-sm">Afficher le
-                        billet</a>
-                    <a href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
-                       class="btn btn-outline-danger btn-sm">
-                        Supprimer le signalement</a>
-                    <a href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
-                       class="btn btn-outline-danger btn-sm">
-                        Supprimer le commentaire </a>
+                <div class="btn-group-sm mbr-form">
+                    <span class="input-group-btn"><a
+                                href="<?= "billet/index/" . $this->nettoyer($commentaireSignale['idBillet']) ?>"
+                                class="btn btn-primary btn-sm">Afficher le
+                            billet</a></span>
+                    <span class="input-group-btn"><a
+                                href="<?= "admin/supprimerSignalement/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
+                                class="btn btn-secondary btn-sm">
+                            Supprimer le signalement</a></span>
+                    <span class="input-group-btn"><a
+                                href="<?= "admin/supprimerCommentaire/" . $this->nettoyer($commentaireSignale['idCom']) ?>"
+                                class="btn btn-secondary btn-sm">
+                            Supprimer le commentaire </a></span>
                 </div>
                 <hr>
             <?php endforeach; ?>

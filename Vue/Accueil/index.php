@@ -30,9 +30,12 @@
             </header>
             <br>
             <p><?= $this->tronquer($billet['contenu']) ?></p>
-            <a class="btn btn-primary btn-sm" href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">Lire la
+            <div class="btn-group-sm mbr-form">
+            <span class="input-group-btn"><a class="btn btn-primary btn-sm"
+                                             href="<?= "billet/index/" . $this->nettoyer($billet['id']) ?>">Lire la
                 suite
-            </a>
+                </a></span>
+            </div>
         </article>
 
     </div>

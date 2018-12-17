@@ -121,7 +121,7 @@ class Vue
         // Le nombre le lettres avant les ...
         $len = 500;
         if (mb_strlen($valeur) >= $len) {
-            $valeur = mb_substr(html_entity_decode($valeur), 0, $len) . "...";
+            $valeur = mb_substr(html_entity_decode($valeur), 0, $len) . " (...)";
         }
         // On écrit la chaine modifiée
         return $valeur;

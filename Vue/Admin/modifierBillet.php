@@ -24,13 +24,13 @@
             <textarea id="contenu" name="contenu" rows="10" placeholder="" required
                       class="form-control"><?= $this->nettoyer($billet['contenu']) ?></textarea><br/>
 
-            <div class="row justify-content-center">
+            <div class="mbr-form align-center">
                 <span class="input-group-btn">
                     <button href="" type="submit" class="btn btn-primary btn-form display-4">Mettre à jour</button>
-                    <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
-                    <a class="btn btn-secondary btn-form display-4"
-                       href="admin/supprimerBillet/<?= $billet['id'] ?>" role="button">Supprimer</a>
-                </span>
+                    <input type="hidden" name="id" value="<?= $billet['id'] ?>"/></span>
+                <span class="input-group-btn"><a class="btn btn-secondary btn-form display-4"
+                                                 href="admin/supprimerBillet/<?= $billet['id'] ?>" role="button">Supprimer</a></span>
+
             </div>
         </form>
     </div>
@@ -54,9 +54,11 @@
             <p class="date"><?= $this->nettoyer($commentaire['date']) ?> </p>
             <p><strong><?= $this->nettoyer($commentaire['auteur']) ?> : </strong></p>
             <p class="blockquote-footer"><?= $this->nettoyer($commentaire['contenu']) ?></p>
-            <a class="btn btn-secondary btn-sm"
-               href="admin/supprimerCommentaire/<?= $commentaire['id'] ?>"
-               role="button">Supprimer</a>
+            <div class="btn-group-sm mbr-form">
+        <span class="input-group-btn"><a class="btn btn-secondary btn-sm"
+                                         href="admin/supprimerCommentaire/<?= $commentaire['id'] ?>"
+                                         role="button">Supprimer</a></span>
+            </div>
             <hr/>
         <?php endforeach; ?>
     </div>

@@ -153,12 +153,12 @@ body {
 }
 
 .btn-sm {
-    font-weight: 500;
+    font-weight: 300;
     letter-spacing: 1px;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    padding: 0.6rem 1.5rem;
+    padding: 0.3rem 1rem;
     border-radius: 3px;
 }
 
@@ -939,6 +939,10 @@ pre {
 
     .btn .mbr-iconfont {
         font-size: 1rem !important;
+    }
+
+    .btn-group-sm {
+        text-align: center;
     }
 }
 

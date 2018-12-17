@@ -16,11 +16,13 @@
         <article class="text">
             <p><?= $billet['contenu'] ?></p>
         </article>
-        <div class="row justify-content-center">
-            <button class=" btn btn-primary btn-sm scrollDown">Commenter l'article</button>
+        <div class="btn-group-sm mbr-form">
+            <span class="input-group-btn"><a role="button"
+                                             class="btn btn-primary btn-sm scrollDown">Commenter l'article</a></span>
         </div>
     </div>
 </section>
+
 
 
 <section class="content_design_1">
@@ -58,7 +60,7 @@
                               placeholder="" required class="form-control"></textarea><br/>
                     <input type="hidden" name="id" value="<?= $billet['id'] ?>"/>
 
-                    <div class="row justify-content-center">
+                    <div class="row justify-content-center mbr-form">
                             <span class="input-group-btn">
                                 <button href="" type="submit" class="btn btn-primary">Commenter</button>
                             </span>

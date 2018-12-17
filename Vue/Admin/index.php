@@ -8,7 +8,8 @@
             </h1>
             <h2 class="mbr-section-subtitle align-center mbr-light pb-3 mbr-fonts-style display-5">
                 Bienvenue, <?= $this->nettoyer($login) ?> !<br>
-                Ce <a title="Retour à l'accueil" href="">blog </a> comporte <?= $this->nettoyer($nbBillets) ?> billet(s)
+                Ce <a title="Retour à l'accueil" href="">blog </a> comporte <?= $this->nettoyer($nbBillets) ?>
+                article(s)
 
                 et <a href="<?= "admin/tousLesCommentaires" ?>"><?= $this->nettoyer($nbCommentaires) ?></a>
                 commentaire(s)
@@ -43,8 +44,10 @@
                     <time> Date de création : <?= $this->nettoyer($billet['date']) ?></time>
                 </header>
                 <p><?= $this->tronquer($billet['contenu']) ?></p>
-                <a class="btn btn-primary btn-sm"
-                   href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a>
+                <div class="btn-group-sm mbr-form">
+                <span class="input-group-btn"><a class="btn btn-primary btn-sm"
+                                                 href="<?= "admin/modifierBillet/" . $this->nettoyer($billet['id']) ?>">Modifier</a></span>
+                </div>
             </article>
         </div>
     </section>
